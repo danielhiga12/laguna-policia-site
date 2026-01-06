@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Painel Policial</title>
+</head>
+<body>
+  <h2>Consulta de RG</h2>
+  <input id="id" placeholder="ID do Discord">
+  <button onclick="buscar()">Buscar</button>
+
+  <pre id="resultado"></pre>
+
+  <script>
+    function buscar() {
+      const id = document.getElementById("id").value;
+      fetch(`/api/rg/${id}`)
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById("resultado").textContent =
+            JSON.stringify(d, null, 2);
+        });
+    }
+  </script>
+</body>
+</html>
 
